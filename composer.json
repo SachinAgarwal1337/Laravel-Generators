@@ -1,0 +1,25 @@
+{
+    "name": "skagarwal/generators",
+    "description": "Directory Structure Laravel 5.1 Generator.",
+    "type": "library",
+    "keywords": ["Laravel", "generators"],
+    "time": "2015-05-28",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sachin Agarwal",
+            "email": "sachinkumaragarwal05@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "SKAgarwal\\Generators\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
