@@ -10,7 +10,7 @@ class ModelGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cmh:model {model} {--migration}';
+    protected $signature = 'make:model:structure {model} {--migration}';
 
     /**
      * The console command description.
