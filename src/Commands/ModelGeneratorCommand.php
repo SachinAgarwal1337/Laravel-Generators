@@ -1,6 +1,6 @@
-<?php namespace CMH\Console\Commands\ModelGenerator\Commands;
+<?php namespace SKAgarwal\Generators\Commands;
 
-use CMH\Console\Commands\ModelGenerator\GenerateClasses;
+use SKAgarwal\Generators\GenerateClasses;
 use Illuminate\Console\Command;
 
 class ModelGeneratorCommand extends Command
@@ -65,5 +65,10 @@ class ModelGeneratorCommand extends Command
             $this->info("\n Migration for {$model} created");
         }
 
+    }
+
+    public static function instance()
+    {
+        return new static();
     }
 }

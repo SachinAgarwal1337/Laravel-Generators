@@ -1,8 +1,9 @@
-<?php namespace CMH\Console\Commands\ModelGenerator;
+<?php namespace SKAgarwal\Generators;
 
 use Artisan;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\AppNamespaceDetectorTrait;
+use SKAgarwal\Generators\Commands\ModelGeneratorCommand;
 
 class GenerateClasses
 {
@@ -191,7 +192,7 @@ class GenerateClasses
      */
     private function makeModelClassWithMigration($migration)
     {
-        Artisan::call('make:model', [
+       ModelGeneratorCommand::instance()->call('make:model', [
             'name'        => $this->modelClassName,
             '--migration' => $migration,
         ]);
