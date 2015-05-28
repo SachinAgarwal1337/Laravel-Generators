@@ -3,7 +3,6 @@
 use Artisan;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\AppNamespaceDetectorTrait;
-use SKAgarwal\Generators\Commands\ModelGeneratorCommand;
 
 class GenerateClasses
 {
@@ -192,7 +191,7 @@ class GenerateClasses
      */
     private function makeModelClassWithMigration($migration)
     {
-       ModelGeneratorCommand::instance()->call('make:model', [
+        Artisan::call('make:model', [
             'name'        => $this->modelClassName,
             '--migration' => $migration,
         ]);
