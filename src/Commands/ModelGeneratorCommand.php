@@ -66,9 +66,4 @@ class ModelGeneratorCommand extends Command
         }
 
     }
-
-    public static function instance()
-    {
-        return new static();
-    }
 }
