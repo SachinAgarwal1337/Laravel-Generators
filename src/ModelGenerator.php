@@ -96,6 +96,4 @@ class ModelGenerator extends Generator
         $this->repoConfig($model);
 
     }
-
-
 }
