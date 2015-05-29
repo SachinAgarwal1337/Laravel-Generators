@@ -33,6 +33,7 @@ class ModelGeneratorCommand extends Command
      * Execute the console command.
      *
      * @param ModelGenerator $class
+     *
      * @return mixed
      */
     public function handle(ModelGenerator $class)

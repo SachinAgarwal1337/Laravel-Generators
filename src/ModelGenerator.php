@@ -20,6 +20,7 @@ class ModelGenerator extends Generator
      * Set the model class name.
      *
      * @param $modelClassName
+     *
      * @return $this
      */
     protected function setModelClassName($modelClassName)
@@ -64,12 +65,13 @@ class ModelGenerator extends Generator
      * Migration if needed.
      *
      * @param $migration
+     *
      * @return string
      */
     private function makeModelClassWithMigration($migration)
     {
         Artisan::call('make:model', [
-            'name' => $this->modelClassName,
+            'name'        => $this->modelClassName,
             '--migration' => $migration,
         ]);
     }
@@ -78,6 +80,7 @@ class ModelGenerator extends Generator
      * Check if migration is needed.
      *
      * @param $migration
+     *
      * @return string
      */
     private function hasMigration($migration)

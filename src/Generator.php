@@ -71,6 +71,7 @@ class Generator
      * check if the directory/file exists.
      *
      * @param string $path
+     *
      * @return bool
      */
     protected function exists($path)
@@ -82,7 +83,7 @@ class Generator
      * Create a directory.
      *
      * @param string $path
-     * @param bool $recursive
+     * @param bool   $recursive
      */
     public function makeDirectory($path, $recursive = false)
     {
@@ -115,6 +116,7 @@ class Generator
      * Get a template.
      *
      * @param $from
+     *
      * @return mixed
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
