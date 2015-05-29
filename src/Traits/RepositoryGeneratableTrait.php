@@ -2,73 +2,94 @@
 
 use Illuminate\Console\AppNamespaceDetectorTrait;
 
-trait RepositoryGeneratableTrait {
+trait RepositoryGeneratableTrait
+{
 
     use AppNamespaceDetectorTrait;
 
     /**
-     * Contract/Interface Name
+     * Contract/Interface Name.
      *
      * @var string
      */
     protected $contractName;
 
     /**
-     * Repository Class Name
+     * Repository Class Name.
      *
      * @var string
      */
     protected $repositoryName;
 
     /**
-     * Contract/Interface Namespace
+     * Contract/Interface Namespace.
      *
      * @var string
      */
     protected $contractNamespace;
 
     /**
-     * Repository Class Namespace
+     * Repository Class Namespace.
      *
      * @var string
      */
-    protected $repositoryNameSpace;
+    protected $repositoryNamespace;
 
     /**
+     * Set the contract name.
+     *
      * @param string $contractName
+     * @return $this
      */
     protected function setContractName($contractName)
     {
         $this->contractName = $contractName;
+
+        return $this;
     }
 
     /**
+     * Set the repository name.
+     *
      * @param string $repositoryName
+     * @return this
      */
     protected function setRepositoryName($repositoryName)
     {
         $this->repositoryName = $repositoryName;
+
+        return $this;
     }
 
     /**
-     * @param string $contractNamespace
+     * Set the contract namespace.
+     *
+     * @param $contractNamespace
+     * @return $this
      */
     protected function setContractNamespace($contractNamespace)
     {
-        $this->contractNamespace = $this->getAppNamespace().$contractNamespace;
+        $this->contractNamespace = $this->getAppNamespace() . $contractNamespace;
+
+        return $this;
     }
 
     /**
-     * @param string $repositoryNameSpace
+     * Set the repository namespace.
+     *
+     * @param string $repositoryNamespace
+     * @return $this
      */
-    protected function setRepositoryNameSpace($repositoryNameSpace)
+    protected function setRepositoryNamespace($repositoryNamespace)
     {
-        $this->repositoryNameSpace
-            = $this->getAppNamespace().$repositoryNameSpace;
+        $this->repositoryNamespace
+            = $this->getAppNamespace() . $repositoryNamespace;
+
+        return $this;
     }
 
     /**
-     * set the properties for Repository
+     * Set the properties for the Repository.
      *
      * @param $model
      */
@@ -80,15 +101,14 @@ trait RepositoryGeneratableTrait {
 
         $this->setContractNamespace("{$model}\\Contracts");
 
-        $this->setRepositoryNameSpace("{$model}\\Repositories");
+        $this->setRepositoryNamespace("{$model}\\Repositories");
     }
 
     /**
-     * Generate the Model Specific Repository Contract/Interface
+     * Generate the Model Specific Repository Contract/Interface.
      *
-     * @param $modelPath
-     *
-     * @return array
+     * @param string $modelPath
+     * @return mixed
      */
     private function makeRepositoryContract($modelPath)
     {
@@ -97,14 +117,15 @@ trait RepositoryGeneratableTrait {
         if (!$this->exists($path)) {
             $content = $this->getRepositoryContractTemplate();
 
-            $this->file->put($path, $content);
+            return $this->file->put($path, $content);
         }
     }
 
     /**
-     * Generate Model Specific Eloquent Repository
+     * Generate Model Specific Eloquent Repository.
      *
      * @param $modelPath
+     * @return mixed
      */
     private function makeEloquentRepository($modelPath)
     {
@@ -113,12 +134,14 @@ trait RepositoryGeneratableTrait {
         if (!$this->exists($path)) {
             $content = $this->getEloquentRepositoryTemplate();
 
-            $this->file->put($path, $content);
+            return $this->file->put($path, $content);
         }
     }
 
     /**
      * Get the content for Repository Contract/Interface
+     *
+     * @return strung|array
      */
     private function getRepositoryContractTemplate()
     {
@@ -131,23 +154,25 @@ trait RepositoryGeneratableTrait {
     }
 
     /**
-     * Get the content for Eloquet Repository Class
+     * Get the content for Eloquent Repository Class.
+     *
+     * @return string|array
      */
     private function getEloquentRepositoryTemplate()
     {
         $template = $this->getTemplate('EloquentRepository');
 
-        $contractNamespace = $this->contractNamespace."\\$this->contractName";
+        $contractNamespace = $this->contractNamespace . "\\$this->contractName";
 
         $find = [
             '{{Namespace}}',
             '{{ContractNamespace}}',
             '{{Repository}}',
-            '{{Contaract}}'
+            '{{Contract}}'
         ];
 
         $replace = [
-            $this->repositoryNameSpace,
+            $this->repositoryNamespace,
             $contractNamespace,
             $this->repositoryName,
             $this->contractName
