@@ -24,6 +24,11 @@
             "SKAgarwal\\Generators\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "Tests/"
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
