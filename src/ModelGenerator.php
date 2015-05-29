@@ -46,7 +46,7 @@ class ModelGenerator extends Generator
 
         $this->makeSubDirectory("Jobs");
 
-        $migration = $this->isMigration($migration);
+        $migration = $this->hasMigration($migration);
         $this->makeModelClassWithMigration($migration);
 
         $this->makeRepositoryContract($this->modelPath);
@@ -77,7 +77,7 @@ class ModelGenerator extends Generator
      *
      * @return string
      */
-    private function isMigration($migration)
+    private function hasMigration($migration)
     {
         return $migration ? "--migration" : '';
     }
