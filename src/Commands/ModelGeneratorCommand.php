@@ -1,6 +1,6 @@
 <?php namespace SKAgarwal\Generators\Commands;
 
-use SKAgarwal\Generators\GenerateClasses;
+use SKAgarwal\Generators\ModelGenerator;
 use Illuminate\Console\Command;
 
 class ModelGeneratorCommand extends Command
@@ -32,11 +32,10 @@ class ModelGeneratorCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param GenerateClasses $class
-     *
+     * @param ModelGenerator $class
      * @return mixed
      */
-    public function handle(GenerateClasses $class)
+    public function handle(ModelGenerator $class)
     {
         $model = ucfirst($this->argument('model'));
         $migration = $this->option('migration');
