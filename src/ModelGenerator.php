@@ -10,25 +10,30 @@ class ModelGenerator extends Generator
     }
 
     /**
-     * Model Class Name
+     * Model Class Name.
      *
      * @var string
      */
     protected $modelClassName;
 
     /**
-     * @param string $modelClassName
+     * Set the model class name.
+     *
+     * @param $modelClassName
+     * @return $this
      */
     protected function setModelClassName($modelClassName)
     {
         $this->modelClassName = $modelClassName;
+
+        return $this;
     }
 
     /**
-     * Generate the Directory Structure and Required Classes
+     * Generate the Directory Structure and Required Classes.
      *
-     * @param $model
-     * @param $migration
+     * @param string $model
+     * @param string $migration
      */
     public function generate($model, $migration)
     {
@@ -56,25 +61,23 @@ class ModelGenerator extends Generator
 
     /**
      * Generate Model Class and
-     * Migration if needed
+     * Migration if needed.
      *
      * @param $migration
-     *
      * @return string
      */
     private function makeModelClassWithMigration($migration)
     {
         Artisan::call('make:model', [
-            'name'        => $this->modelClassName,
+            'name' => $this->modelClassName,
             '--migration' => $migration,
         ]);
     }
 
     /**
-     * check if migration is needed
+     * Check if migration is needed.
      *
      * @param $migration
-     *
      * @return string
      */
     private function hasMigration($migration)
@@ -84,7 +87,7 @@ class ModelGenerator extends Generator
 
 
     /**
-     * Set all the properties of the Class
+     * Set all the properties of the Class.
      *
      * @param $model
      */

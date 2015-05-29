@@ -2,7 +2,7 @@
 
 use {{ContractNamespace}};
 
-class {{Repository}} implements {{Contaract}}
+class {{Repository}} implements {{Contract}}
 {
 
 }

@@ -6,19 +6,21 @@ class Generator
 {
 
     /**
+     * The Laravel Filesystem.
+     *
      * @var Filesystem
      */
     protected $file;
 
     /**
-     * Model Class path
+     * Model Class path.
      *
      * @var string
      */
     protected $modelPath;
 
     /**
-     * Requested Model Name
+     * Requested Model Name.
      *
      * @var string
      */
@@ -46,6 +48,8 @@ class Generator
     }
 
     /**
+     * Set the model.
+     *
      * @param string $model
      */
     protected function setModel($model)
@@ -54,6 +58,8 @@ class Generator
     }
 
     /**
+     * Set the model path.
+     *
      * @param string $modelPath
      */
     protected function setModelPath($modelPath)
@@ -62,10 +68,9 @@ class Generator
     }
 
     /**
-     * check if the directory/file exists
+     * check if the directory/file exists.
      *
-     * @param $path
-     *
+     * @param string $path
      * @return bool
      */
     protected function exists($path)
@@ -74,24 +79,24 @@ class Generator
     }
 
     /**
-     * create directory
+     * Create a directory.
      *
-     * @param      $path
+     * @param string $path
      * @param bool $recursive
      */
     public function makeDirectory($path, $recursive = false)
     {
         if (!$this->exists($path)) {
-            $this->file->makeDirectory($path, 0755, $recursive);
+            return $this->file->makeDirectory($path, 0755, $recursive);
         }
     }
 
     /**
-     * Create a directory for the Requesting Model
+     * Create a directory for the Requesting Model.
      */
     protected function makeModelDirectory()
     {
-        $this->makeDirectory($this->modelPath);
+        return $this->makeDirectory($this->modelPath);
     }
 
     /**
@@ -103,18 +108,20 @@ class Generator
     {
         $path = "{$this->modelPath}/{$subDirectory}";
 
-        $this->makeDirectory($path, true);
+        return $this->makeDirectory($path, true);
     }
 
     /**
-     * @param $from
+     * Get a template.
      *
-     * @return string
+     * @param $from
+     * @return mixed
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function getTemplate($from)
     {
-        $templatePath = __DIR__."/Templates/{$from}.txt";
+        $templatePath = __DIR__ . "/Templates/{$from}.txt";
 
         return $this->file->get($templatePath);
     }
