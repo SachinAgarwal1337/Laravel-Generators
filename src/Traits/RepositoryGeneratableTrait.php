@@ -39,6 +39,7 @@ trait RepositoryGeneratableTrait
      * Set the contract name.
      *
      * @param string $contractName
+     *
      * @return $this
      */
     protected function setContractName($contractName)
@@ -52,6 +53,7 @@ trait RepositoryGeneratableTrait
      * Set the repository name.
      *
      * @param string $repositoryName
+     *
      * @return this
      */
     protected function setRepositoryName($repositoryName)
@@ -65,11 +67,13 @@ trait RepositoryGeneratableTrait
      * Set the contract namespace.
      *
      * @param $contractNamespace
+     *
      * @return $this
      */
     protected function setContractNamespace($contractNamespace)
     {
-        $this->contractNamespace = $this->getAppNamespace() . $contractNamespace;
+        $this->contractNamespace
+            = $this->getAppNamespace() . $contractNamespace;
 
         return $this;
     }
@@ -78,6 +82,7 @@ trait RepositoryGeneratableTrait
      * Set the repository namespace.
      *
      * @param string $repositoryNamespace
+     *
      * @return $this
      */
     protected function setRepositoryNamespace($repositoryNamespace)
@@ -108,6 +113,7 @@ trait RepositoryGeneratableTrait
      * Generate the Model Specific Repository Contract/Interface.
      *
      * @param string $modelPath
+     *
      * @return mixed
      */
     private function makeRepositoryContract($modelPath)
@@ -125,6 +131,7 @@ trait RepositoryGeneratableTrait
      * Generate Model Specific Eloquent Repository.
      *
      * @param $modelPath
+     *
      * @return mixed
      */
     private function makeEloquentRepository($modelPath)
