@@ -2,7 +2,7 @@
 
 use Tests\TestCase;
 use Tests\Traits\MockableTrait;
-use Tests\Traits\ReflectableTrait;
+use SKAgarwal\Reflection\ReflectableTrait;
 use Illuminate\Filesystem\Filesystem;
 use SKAgarwal\Generators\ModelGenerator;
 
