@@ -23,7 +23,11 @@
     },
     "autoload": {
         "psr-4": {
-            "SKAgarwal\\Generators\\": "src/",
+            "SKAgarwal\\Generators\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Tests\\": "Tests/"
         }
     },
