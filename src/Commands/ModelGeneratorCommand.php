@@ -64,6 +64,5 @@ class ModelGeneratorCommand extends Command
         if ($migration) {
             $this->info("\n Migration for {$model} created");
         }
-
     }
 }

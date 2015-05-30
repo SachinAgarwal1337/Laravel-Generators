@@ -92,14 +92,14 @@ class ModelGenerator extends Generator
     /**
      * Set all the properties of the Class.
      *
-     * @param $model
+     * @param string $model
      */
     protected function config($model)
     {
         parent::config($model);
 
         $this->setModelClassName("{$this->model}/{$this->model}");
-        $this->repoConfig($model);
+        $this->repoConfig($this->model);
 
     }
 }

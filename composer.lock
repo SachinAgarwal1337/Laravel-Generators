@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "90f5a4fd80b5413dbd306eae6b36eedc",
+    "hash": "d7dbed27cdb4b94aa12524d74d43d387",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -179,6 +179,49 @@
             "description": "The Illuminate Console package.",
             "homepage": "http://laravel.com",
             "time": "2015-05-28 22:39:35"
+        },
+        {
+            "name": "illuminate/container",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/container.git",
+                "reference": "9eee7b74485cdc98562906f9cbffbb994a11cf7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/9eee7b74485cdc98562906f9cbffbb994a11cf7a",
+                "reference": "9eee7b74485cdc98562906f9cbffbb994a11cf7a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.1.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Container\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "The Illuminate Container package.",
+            "homepage": "http://laravel.com",
+            "time": "2015-05-25 10:25:20"
         },
         {
             "name": "illuminate/contracts",

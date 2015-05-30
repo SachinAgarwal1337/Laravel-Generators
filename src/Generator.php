@@ -13,18 +13,18 @@ class Generator
     protected $file;
 
     /**
-     * Model Class path.
-     *
-     * @var string
-     */
-    protected $modelPath;
-
-    /**
      * Requested Model Name.
      *
      * @var string
      */
     protected $model;
+
+    /**
+     * Model Class path.
+     *
+     * @var string
+     */
+    protected $modelPath;
 
     /**
      * @param Filesystem $file
@@ -54,7 +54,7 @@ class Generator
      */
     protected function setModel($model)
     {
-        $this->model = $model;
+        $this->model = ucfirst($model);
     }
 
     /**
