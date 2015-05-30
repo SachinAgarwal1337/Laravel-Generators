@@ -24,7 +24,9 @@ class ModelGeneratorTest extends TestCase
     protected function setUp()
     {
         $this->modelGenerator = $this->mock(ModelGenerator::class,
-            [new Filesystem()], ['getAppNamespace'], ['App\\']
+            [new Filesystem()],
+            ['getAppNamespace'],
+            ['App\\']
         );
 
         $this->reflect($this->modelGenerator);
