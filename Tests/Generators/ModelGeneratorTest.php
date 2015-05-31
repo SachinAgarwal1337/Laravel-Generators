@@ -11,25 +11,17 @@ class ModelGeneratorTest extends TestCase
     use MockableTrait, ReflectableTrait;
 
     /**
-     *  ModelGenerator Class's mocking Object
-     *
-     * @var
-     */
-    protected $modelGenerator;
-
-
-    /**
      * Initialization
      */
     protected function setUp()
     {
-        $this->modelGenerator = $this->mock(ModelGenerator::class,
+        $modelGenerator = $this->mock(ModelGenerator::class,
             [new Filesystem()],
             ['getAppNamespace'],
             ['App\\']
         );
 
-        $this->reflect($this->modelGenerator);
+        $this->reflect($modelGenerator);
 
         $this->callConfig('foo');
     }
