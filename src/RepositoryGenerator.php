@@ -15,6 +15,12 @@ class RepositoryGenerator extends Generator
      */
     private $repo;
 
+    /**
+     * Generate the Repository Contract and Implimentation
+     *
+     * @param $model
+     * @param $repo
+     */
     public function generate($model, $repo)
     {
         $this->repo = ucfirst($repo);
@@ -28,6 +34,11 @@ class RepositoryGenerator extends Generator
 
     }
 
+    /**
+     * Set all the properties of the Class.
+     *
+     * @param $model
+     */
     protected function config($model)
     {
         parent::config($model);
