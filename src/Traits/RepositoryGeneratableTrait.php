@@ -98,11 +98,11 @@ trait RepositoryGeneratableTrait
      *
      * @param $model
      */
-    protected function config($model)
+    protected function config($model, $repoName)
     {
-        $this->setContractName("{$model}Repository");
+        $this->setContractName("{$repoName}Repository");
 
-        $this->setRepositoryName("Eloquent{$model}Repository");
+        $this->setRepositoryName("Eloquent{$repoName}Repository");
 
         $this->setContractNamespace("{$model}\\Contracts");
 
@@ -116,7 +116,7 @@ trait RepositoryGeneratableTrait
      *
      * @return mixed
      */
-    private function makeRepositoryContract($modelPath)
+    protected function makeRepositoryContract($modelPath)
     {
         $path = "{$modelPath}/Contracts/{$this->contractName}.php";
 
@@ -134,7 +134,7 @@ trait RepositoryGeneratableTrait
      *
      * @return mixed
      */
-    private function makeEloquentRepository($modelPath)
+    protected function makeEloquentRepository($modelPath)
     {
         $path = "{$modelPath}/Repositories/{$this->repositoryName}.php";
 
