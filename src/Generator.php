@@ -123,7 +123,7 @@ class Generator
      */
     protected function getTemplate($from)
     {
-        $templatePath = __DIR__ . "/Templates/{$from}.stub";
+        $templatePath = __DIR__ . "/Stubs/{$from}.stub";
 
         return $this->file->get($templatePath);
     }
