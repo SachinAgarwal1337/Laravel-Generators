@@ -41,3 +41,27 @@ class Eloquent{$repo}Repository implements {$repo}Repository
 
 Repo;
 }
+
+/**
+ * Delete a file if exists
+ *
+ * @param $file
+ */
+function deleteFile($file)
+{
+    if (is_file($file)) {
+        unlink($file);
+    }
+}
+
+/**
+ * Delete a directory if exists
+ *
+ * @param $dir
+ */
+function deleteDir($dir)
+{
+    if (is_dir($dir)) {
+        rmdir($dir);
+    }
+}
