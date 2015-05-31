@@ -1,5 +1,4 @@
 # Laravel-5.1-Generators
-[![Build Status](https://travis-ci.org/SachinAgarwal1337/Laravel-5.1-Generators.svg?branch=develop)](https://travis-ci.org/SachinAgarwal1337/Laravel-5.1-Generators)
 <br><br>If you like to keep your laravel appliaction in well formed structure and tired of making all the directories and subdirectories manually for every model, Then this package will help you automate this process.
 
 **Just run the following command:**
