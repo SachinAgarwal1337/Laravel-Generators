@@ -1,0 +1,8 @@
+<?php namespace {{Namespace}};
+
+use {{ContractNamespace}};
+
+class {{Repository}} implements {{Contract}}
+{
+
+}
