@@ -11,21 +11,21 @@ class TestCase extends PHPUnit_Framework_TestCase
 {
 
     /**
-     * Initialization.
+     * Initialization before all tests.
      */
     public static function setUpBeforeClass()
     {
         mkdir('app');
         mkdir('stubs');
-        $content = repository_interface_content();
+        $content = repository_interface_content('Foo');
         file_put_contents('stubs/FooRepository.stub', $content);
 
-        $content = eloquent_repository_content();
+        $content = eloquent_repository_content('Foo');
         file_put_contents('stubs/EloquentFooRepository.stub', $content);
     }
 
     /**
-     * Clean up Stuff After test.
+     * Clean up Stuff After all tests.
      */
     public static function tearDownAfterClass()
     {
@@ -36,40 +36,3 @@ class TestCase extends PHPUnit_Framework_TestCase
     }
 }
 
-/**
- * Generate content for repository interface.
- *
- * @return string
- */
-function repository_interface_content()
-{
-    return <<<Contract
-<?php namespace App\\Foo\\Contracts;
-
-interface FooRepository
-{
-
-}
-
-Contract;
-}
-
-/**
- * Generate content for Eloquent Repository.
- *
- * @return string
- */
-function eloquent_repository_content()
-{
-    return <<<Repository
-<?php namespace App\\Foo\\Repositories;
-
-use App\\Foo\\Contracts\\FooRepository;
-
-class EloquentFooRepository implements FooRepository
-{
-
-}
-
-Repository;
-}

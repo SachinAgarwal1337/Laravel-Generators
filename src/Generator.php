@@ -2,7 +2,7 @@
 
 use Illuminate\Filesystem\Filesystem;
 
-class Generator
+abstract class Generator
 {
 
     /**

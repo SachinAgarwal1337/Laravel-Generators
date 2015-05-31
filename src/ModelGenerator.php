@@ -99,7 +99,7 @@ class ModelGenerator extends Generator
         parent::config($model);
 
         $this->setModelClassName("{$this->model}/{$this->model}");
-        $this->repoConfig($this->model);
+        $this->repoConfig($this->model, $this->model);
 
     }
 }

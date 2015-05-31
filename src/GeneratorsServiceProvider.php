@@ -22,6 +22,7 @@ class GeneratorsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerModelGenerator();
+        $this->registerRepositoryGenerator();
     }
 
     /**
@@ -33,5 +34,16 @@ class GeneratorsServiceProvider extends ServiceProvider
             return $app['SKAgarwal\Generators\Commands\ModelGeneratorCommand'];
         });
         $this->commands('command.skagarwal.model');
+    }
+
+    /**
+     * register make:repository command
+     */
+    private function registerRepositoryGenerator()
+    {
+        $this->app->singleton('command.skagarwal.repository', function ($app) {
+            return $app['SKAgarwal\Generators\Commands\RepositoryGeneratorCommand'];
+        });
+        $this->commands('command.skagarwal.repository');
     }
 }
