@@ -119,20 +119,14 @@ class ModelGeneratorTest extends TestCase
     /**
      * Clean up stuff after tests.
      */
-    public static function tearDownAfterClass()
+    protected function tearDown()
     {
-        $basePath = "app/Foo";
-        $contractsPath = "{$basePath}/Contracts";
-        $RepositoryPath = "{$basePath}/Repositories";
+        deleteFile("{$this->getModelPath}/Repositories/{$this->getRepositoryName}.php");
+        deleteFile("{$this->getModelPath}/Contracts/{$this->getContractName}.php");
 
-        unlink("{$contractsPath}/FooRepository.php");
-        unlink("{$RepositoryPath}/EloquentFooRepository.php");
-
-        rmdir($RepositoryPath);
-        rmdir("{$basePath}/Events");
-        rmdir($contractsPath);
-        rmdir($basePath);
-
-        parent::tearDownAfterClass();
+        deleteDir("{$this->getModelPath}/Events");
+        deleteDir("{$this->getModelPath}/Repositories");
+        deleteDir("{$this->getModelPath}/Contracts");
+        deleteDir($this->getModelPath);
     }
 }
