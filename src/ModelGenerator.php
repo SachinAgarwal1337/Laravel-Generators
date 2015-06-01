@@ -52,7 +52,6 @@ class ModelGenerator extends Generator
 
         $this->makeSubDirectory("Jobs");
 
-        $migration = $this->hasMigration($migration);
         $this->makeModelClassWithMigration($migration);
 
         $this->makeRepositoryContract($this->modelPath);
@@ -70,6 +69,8 @@ class ModelGenerator extends Generator
      */
     private function makeModelClassWithMigration($migration)
     {
+        $migration = $this->hasMigration($migration);
+
         Artisan::call('make:model', [
             'name'        => $this->modelClassName,
             '--migration' => $migration,
