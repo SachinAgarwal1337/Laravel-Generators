@@ -1,6 +1,6 @@
 <?php namespace SKAgarwal\Generators;
 
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 use SKAgarwal\Generators\Traits\RepositoryGeneratableTrait;
 
 class ModelGenerator extends Generator

@@ -12,7 +12,7 @@ class ModelGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $name = 'make:model:structure';
+    protected $name = 'create:model';
 
     /**
      * The console command description.

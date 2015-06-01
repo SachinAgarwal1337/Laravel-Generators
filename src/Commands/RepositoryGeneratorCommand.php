@@ -12,7 +12,7 @@ class RepositoryGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $name = 'make:repository';
+    protected $name = 'create:repository';
 
     /**
      * The console command description.
@@ -43,8 +43,8 @@ class RepositoryGeneratorCommand extends Command
         $repoGenreator->generate($model, $repo);
 
         $repo = ucfirst($repo ?: $model);
-        $this->info("app\\{$model}\\Contracts\\{$repo}Repository Created");
-        $this->info("app\\{$model}\\Repositories\\Eloquent{$repo}Repository Created");
+        $this->info("Created: app\\{$model}\\Contracts\\{$repo}Repository");
+        $this->info("Created: app\\{$model}\\Repositories\\Eloquent{$repo}Repository");
     }
 
     /**
