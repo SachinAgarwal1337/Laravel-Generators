@@ -23,10 +23,11 @@ class GeneratorsServiceProvider extends ServiceProvider
     {
         $this->registerModelGenerator();
         $this->registerRepositoryGenerator();
+        $this->registerEventGenerator();
     }
 
     /**
-     * register make:model:structure command
+     * register create:model command
      */
     private function registerModelGenerator()
     {
@@ -37,7 +38,7 @@ class GeneratorsServiceProvider extends ServiceProvider
     }
 
     /**
-     * register make:repository command
+     * register create:repository command
      */
     private function registerRepositoryGenerator()
     {
@@ -45,5 +46,16 @@ class GeneratorsServiceProvider extends ServiceProvider
             return $app['SKAgarwal\Generators\Commands\RepositoryGeneratorCommand'];
         });
         $this->commands('command.skagarwal.repository');
+    }
+
+    /**
+     * register create:evetn command
+     */
+    private function registerEventGenerator()
+    {
+        $this->app->singleton('command.skagarwal.event', function ($app) {
+            return $app['SKAgarwal\Generators\Commands\EventGeneratorCommand'];
+        });
+        $this->commands('command.skagarwal.event');
     }
 }
