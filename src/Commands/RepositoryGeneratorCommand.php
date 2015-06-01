@@ -2,6 +2,8 @@
 
 use Illuminate\Console\Command;
 use SKAgarwal\Generators\RepositoryGenerator;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class RepositoryGeneratorCommand extends Command
 {
@@ -10,7 +12,7 @@ class RepositoryGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:repository {model} {--repo=}';
+    protected $name = 'make:repository';
 
     /**
      * The console command description.
@@ -37,11 +39,45 @@ class RepositoryGeneratorCommand extends Command
     public function handle(RepositoryGenerator $repoGenreator)
     {
         $model = ucfirst($this->argument('model'));
-        $repo = $this->option('repo');
+        $repo = $this->option('repository');
         $repoGenreator->generate($model, $repo);
 
         $repo = ucfirst($repo ?: $model);
-        $this->info("{$model}\\Contracts\\{$repo}Repository Created");
-        $this->info("{$model}\\Repositories\\Eloquent{$repo}Repository Created");
+        $this->info("app\\{$model}\\Contracts\\{$repo}Repository Created");
+        $this->info("app\\{$model}\\Repositories\\Eloquent{$repo}Repository Created");
+    }
+
+    /**
+     * Get the console command arguments.
+     *
+     * @return array
+     */
+    protected function getArguments()
+    {
+        return [
+            [
+                'model',
+                InputArgument::REQUIRED,
+                'Name of the model to be created.'
+            ],
+        ];
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            [
+                '--repository',
+                '-r',
+                InputOption::VALUE_REQUIRED,
+                'Name of the repository to be created.',
+                null
+            ],
+        ];
     }
 }
