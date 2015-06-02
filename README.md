@@ -100,7 +100,7 @@ And since `--migration` option is provided, there will be a migration for `Foo` 
 - `model` - _Required._ The Model Name. Repository Will Be Created Under This Model Directory.
 
 **Options:**
-- `--repo` - _Optional._ The Repository Name to be created. If not provided, Repository with the Model Name will be created.
+- `--repository` - _Optional._ The Repository Name to be created. If not provided, Repository with the Model Name will be created.
 
 **Usage:**
 ```php
@@ -111,7 +111,7 @@ This will produce:
 app\Foo\Contracts\FooRepository.php
 app\Foo\Repositories\EloquentFooRepository.php
 ```
-If `--repo=Bar` is provided, then it will produce:
+If `--repository=Bar` or `-r Bar` is provided, then it will produce:
 ```php
 app\Foo\Contracts\BarRepository.php
 app\Foo\Repositories\EloquentBarRepository.php
