@@ -44,6 +44,7 @@ class RepositoryGeneratorTest extends TestCase
     public function it_sets_the_config()
     {
         $this->callConfig('foo');
+
         $this->assertEquals('Foo', $this->getModel);
         $this->assertEquals('app/Foo', $this->getModelPath);
         $this->assertEquals('FooRepository', $this->getContractName);
