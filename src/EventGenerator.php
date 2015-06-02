@@ -1,16 +1,18 @@
 <?php namespace SKAgarwal\Generators;
 
 use Illuminate\Support\Facades\Artisan;
-use SKAgarwal\Generators\Traits\NamespacingTrait;
 
 class EventGenerator extends Generator
 {
-    use NamespacingTrait;
-
     /**
      * @var string
      */
     protected $event;
+
+    /**
+     * @var string
+     */
+    protected $name;
 
     /**
      * Generate Event

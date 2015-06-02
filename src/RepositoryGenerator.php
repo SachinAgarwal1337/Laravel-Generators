@@ -31,7 +31,6 @@ class RepositoryGenerator extends Generator
         $this->makeSubDirectory('Contracts');
         $this->makeRepositoryContract($this->modelPath);
         $this->makeEloquentRepository($this->modelPath);
-
     }
 
     /**

@@ -69,7 +69,7 @@ class ListenerGenerator extends Generator
      *
      * @param $event
      */
-    protected function addEventIfPresent($event)
+    private function addEventIfPresent($event)
     {
         if ($event) {
             $event = ucfirst($event);
