@@ -15,7 +15,8 @@ class ModelGeneratorTest extends TestCase
      */
     protected function setUp()
     {
-        $modelGenerator = $this->mock(ModelGenerator::class,
+        $modelGenerator = $this->mock(
+            ModelGenerator::class,
             [new Filesystem()],
             ['getAppNamespace'],
             ['App\\']
@@ -46,10 +47,11 @@ class ModelGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function it_will_set_method_class_name_property()
+    public function it_gets_the_migration_argument()
     {
-        $this->callSetModelClassName('Bar/Bar');
-        $this->assertEquals('Bar/Bar', $this->getModelClassName);
+        $migration = $this->callHasMigration(true);
+
+        $this->assertEquals("--migration", $migration);
     }
 
     /**
