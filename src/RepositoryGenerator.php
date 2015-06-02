@@ -42,8 +42,18 @@ class RepositoryGenerator extends Generator
     protected function config($model)
     {
         parent::config($model);
-        // if repo is provided use it, else model will be the repo
-        $repo = $this->repo ?: $this->model;
-        $this->repoConfig($this->model, $repo);
+
+        $repo = $this->getRepositoryName();
+        $this->repoConfig($this->model, $repo,  $this->namespace);
+    }
+
+    /**
+     * get the repository name
+     *
+     * @return string
+     */
+    protected function getRepositoryName()
+    {
+        return $this->repo ?: $this->model;
     }
 }

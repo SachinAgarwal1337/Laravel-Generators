@@ -1,9 +1,11 @@
 <?php namespace SKAgarwal\Generators;
 
+use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Filesystem\Filesystem;
 
 abstract class Generator
 {
+    use AppNamespaceDetectorTrait;
 
     /**
      * The Laravel Filesystem.
@@ -27,11 +29,26 @@ abstract class Generator
     protected $modelPath;
 
     /**
+     * Namepsace of the application.
+     *
+     * @var
+     */
+    protected $namespace;
+
+    /**
      * @param Filesystem $file
      */
     public function __construct(Filesystem $file)
     {
         $this->file = $file;
+    }
+
+    /**
+     * @param mixed $namespace
+     */
+    public function setNamespace()
+    {
+        $this->namespace = $this->getAppNamespace();
     }
 
 
@@ -42,6 +59,8 @@ abstract class Generator
      */
     protected function config($model)
     {
+        $this->setNamespace();
+
         $this->setModel($model);
 
         $this->setModelPath("app/{$this->model}");

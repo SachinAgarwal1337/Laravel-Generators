@@ -1,30 +1,48 @@
 <?php namespace SKAgarwal\Generators;
 
-use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Support\Facades\Artisan;
+use SKAgarwal\Generators\Traits\NamespacingTrait;
 
-class EventGenerator
+class EventGenerator extends Generator
 {
-    use AppNamespaceDetectorTrait;
+    use NamespacingTrait;
 
-    protected $eventNamespace;
+    /**
+     * @var string
+     */
+    protected $event;
 
-    public function generate($event, $model)
+    /**
+     * Generate Event
+     *
+     * @param $name
+     * @param $model
+     */
+    public function generate($name, $model)
     {
-        $this->config($model, $event);
-        Artisan::call('make:event',['name' => $this->eventNamespace]);
+        $this->name - ucfirst($name);
+        $this->config($model);
+
+        Artisan::call('make:event', ['name' => $this->event]);
     }
 
-    protected function config($model, $event)
+    /**
+     * @param string $event
+     */
+    public function setEvent($event)
     {
-        $event = ucfirst($event);
-        if ($model) {
-            $model = ucfirst($model);
-            $this->eventNamespace
-                = $this->getAppNamespace() . "$model\\Events\\$event";
-        }
-        else {
-            $this->eventNamespace = $event;
-        }
+        $this->event = $event;
+    }
+
+    /**
+     * Configure Event Generator
+     *
+     * @param $model
+     */
+    protected function config($model)
+    {
+        parent::config($model);
+
+        $this->setEvent("{$this->namespace}{$this->model}\\Events\\{$this->name}");
     }
 }

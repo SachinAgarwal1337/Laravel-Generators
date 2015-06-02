@@ -19,7 +19,7 @@ class EventGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create a new Model Specific Event Class';
+    protected $description = 'Create A New Model Specific Event Class';
 
     /**
      * Create a new command instance.
@@ -38,17 +38,17 @@ class EventGeneratorCommand extends Command
      */
     public function handle(EventGenerator $eventGen)
     {
-        $event = $this->argument('name');
+        $name = $this->argument('name');
         $model = $this->option('model');
-        $eventGen->generate($event, $model);
+        $eventGen->generate($name, $model);
 
-        $event = ucfirst($event);
+        $name = ucfirst($name);
         if ($model) {
             $model = ucfirst($model);
-            $this->info("Created: app\\$model\\Events\\$event.php");
+            $this->info("Created: app\\$model\\Events\\$name.php");
         }
         else {
-            $this->info("Created: app\\Events\\$event.php");
+            $this->info("Created: app\\Events\\$name.php");
         }
     }
 
