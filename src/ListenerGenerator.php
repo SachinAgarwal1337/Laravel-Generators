@@ -1,12 +1,14 @@
 <?php namespace SKAgarwal\Generators;
 
 use Illuminate\Support\Facades\Artisan;
+use SKAgarwal\Generators\Traits\EventGeneratableTrait;
 use SKAgarwal\Generators\Traits\ListenerGeneratableTrait;
 
 class ListenerGenerator extends Generator
 {
-    use ListenerGeneratableTrait {
-        config as listenerConfig;
+    use ListenerGeneratableTrait, EventGeneratableTrait {
+        ListenerGeneratableTrait::config as listenerConfig;
+        EventGeneratableTrait::config as eventConfig;
     }
 
     /**
@@ -24,8 +26,8 @@ class ListenerGenerator extends Generator
     /**
      * Generate the listener.
      *
-     * @param       $name
-     * @param array $options
+     * @param string $name
+     * @param array  $options
      */
     public function generate($name, $options = [])
     {
@@ -57,7 +59,7 @@ class ListenerGenerator extends Generator
         $queued = $this->isQueued($options['queued']);
 
         $this->arguments = [
-            'name'     => "$this->listenerNamespace\\{$this->name}",
+            'name'     => "{$this->listenerNamespace}\\{$this->name}",
             '--queued' => $queued,
         ];
 
@@ -86,5 +88,6 @@ class ListenerGenerator extends Generator
     {
         parent::config($model);
         $this->listenerConfig($this->model, $this->namespace);
+        $this->eventConfig($this->model, $this->namespace);
     }
 }

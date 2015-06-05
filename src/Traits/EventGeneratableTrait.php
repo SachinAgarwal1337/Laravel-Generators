@@ -1,32 +1,34 @@
 <?php namespace SKAgarwal\Generators\Traits;
 
-trait ListenerGeneratableTrait
+trait EventGeneratableTrait
 {
+
     /**
      * @var string
      */
-    protected $listenerNamespace;
+    protected $eventNamespace;
 
     /**
      * @param string $eventNamespace
      *
      * @return $this
      */
-    protected function setListenerNamespace($listenerNamespace)
+    public function setEventNamespace($eventNamespace)
     {
-        $this->listenerNamespace = $listenerNamespace;
+        $this->eventNamespace = $eventNamespace;
 
         return $this;
     }
 
     /**
-     * Set the properties for the Event Listener
+     * Set properties of Event Generator
      *
      * @param $model
      * @param $namespace
      */
     protected function config($model, $namespace)
     {
-        $this->setListenerNamespace("{$namespace}{$model}\\Listeners");
+        $this->setEventNamespace("{$namespace}{$model}\\Events");
     }
+
 }
