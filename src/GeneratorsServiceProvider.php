@@ -25,6 +25,7 @@ class GeneratorsServiceProvider extends ServiceProvider
         $this->registerRepositoryGenerator();
         $this->registerEventGenerator();
         $this->registerListenerGenerator();
+        $this->registerJobGenerator();
     }
 
     /**
@@ -69,5 +70,16 @@ class GeneratorsServiceProvider extends ServiceProvider
             return $app['SKAgarwal\Generators\Commands\ListenerGeneratorCommand'];
         });
         $this->commands('command.skagarwal.listener');
+    }
+
+    /**
+     * register create:job command
+     */
+    private function registerJobGenerator()
+    {
+        $this->app->singleton('command.skagarwal.job', function ($app) {
+            return $app['SKAgarwal\Generators\Commands\JobGeneratorCommand'];
+        });
+        $this->commands('command.skagarwal.job');
     }
 }
