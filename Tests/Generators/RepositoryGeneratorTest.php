@@ -4,18 +4,19 @@ use Illuminate\Filesystem\Filesystem;
 use SKAgarwal\Generators\RepositoryGenerator;
 use SKAgarwal\Reflection\ReflectableTrait;
 use Tests\TestCase;
+use Tests\Traits\InitializableTrait;
 use Tests\Traits\MockableTrait;
 
 class RepositoryGeneratorTest extends TestCase
 {
-    use MockableTrait, ReflectableTrait;
+    use MockableTrait, ReflectableTrait, InitializableTrait;
 
     /**
      * Initialization.
      */
     public static function setUpBeforeClass()
     {
-        parent::setUpBeforeClass();
+        InitializableTrait::setUpBeforeClass();
 
         $content = repository_interface_content('Bar');
         file_put_contents('stubs/BarRepository.stub', $content);
@@ -118,6 +119,6 @@ class RepositoryGeneratorTest extends TestCase
     {
         unlink('stubs/BarRepository.stub');
         unlink('stubs/EloquentBarRepository.stub');
-        parent::tearDownAfterClass();
+        InitializableTrait::tearDownAfterClass();
     }
 }

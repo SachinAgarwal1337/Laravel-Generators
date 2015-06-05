@@ -1,6 +1,7 @@
 <?php namespace Tests\Generators;
 
 use Tests\TestCase;
+use Tests\Traits\InitializableTrait;
 use Tests\Traits\MockableTrait;
 use SKAgarwal\Reflection\ReflectableTrait;
 use Illuminate\Filesystem\Filesystem;
@@ -8,7 +9,7 @@ use SKAgarwal\Generators\ModelGenerator;
 
 class ModelGeneratorTest extends TestCase
 {
-    use MockableTrait, ReflectableTrait;
+    use MockableTrait, ReflectableTrait, InitializableTrait;
 
     /**
      * Initialization
