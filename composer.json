@@ -14,10 +14,12 @@
     "require": {
         "illuminate/support": "~5.1",
         "illuminate/console": "~5.1",
-        "illuminate/filesystem": "~5.1"
+        "illuminate/filesystem": "~5.1",
+        "illuminate/container": "~5.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "~4.0",
+        "skagarwal/reflection": "~1.0"
     },
     "autoload": {
         "psr-4": {
@@ -25,6 +27,9 @@
         }
     },
     "autoload-dev": {
+        "files": [
+            "Tests/Helpers/helper.php"
+        ],
         "psr-4": {
             "Tests\\": "Tests/"
         }

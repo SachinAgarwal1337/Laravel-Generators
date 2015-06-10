@@ -1,6 +1,6 @@
 <?php namespace SKAgarwal\Generators;
 
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 use SKAgarwal\Generators\Traits\RepositoryGeneratableTrait;
 
 class ModelGenerator extends Generator
@@ -52,7 +52,6 @@ class ModelGenerator extends Generator
 
         $this->makeSubDirectory("Jobs");
 
-        $migration = $this->hasMigration($migration);
         $this->makeModelClassWithMigration($migration);
 
         $this->makeRepositoryContract($this->modelPath);
@@ -70,6 +69,8 @@ class ModelGenerator extends Generator
      */
     private function makeModelClassWithMigration($migration)
     {
+        $migration = $this->hasMigration($migration);
+
         Artisan::call('make:model', [
             'name'        => $this->modelClassName,
             '--migration' => $migration,
@@ -92,14 +93,13 @@ class ModelGenerator extends Generator
     /**
      * Set all the properties of the Class.
      *
-     * @param $model
+     * @param string $model
      */
     protected function config($model)
     {
         parent::config($model);
 
         $this->setModelClassName("{$this->model}/{$this->model}");
-        $this->repoConfig($model);
-
+        $this->repoConfig($this->model, $this->model, $this->namespace);
     }
 }

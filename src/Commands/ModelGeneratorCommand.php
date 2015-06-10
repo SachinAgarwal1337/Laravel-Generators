@@ -2,6 +2,8 @@
 
 use SKAgarwal\Generators\ModelGenerator;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class ModelGeneratorCommand extends Command
 {
@@ -10,7 +12,7 @@ class ModelGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:model:structure {model} {--migration}';
+    protected $name = 'create:model';
 
     /**
      * The console command description.
@@ -64,6 +66,39 @@ class ModelGeneratorCommand extends Command
         if ($migration) {
             $this->info("\n Migration for {$model} created");
         }
+    }
 
+    /**
+     * Get the console command arguments.
+     *
+     * @return array
+     */
+    protected function getArguments()
+    {
+        return [
+            [
+                'model',
+                InputArgument::REQUIRED,
+                'Name of the model to be created.'
+            ],
+        ];
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            [
+                '--migration',
+                '-m',
+                InputOption::VALUE_NONE,
+                'Create a migration file for the model',
+                null
+            ],
+        ];
     }
 }

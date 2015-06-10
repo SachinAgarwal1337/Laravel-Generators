@@ -1,12 +1,7 @@
 <?php namespace SKAgarwal\Generators\Traits;
 
-use Illuminate\Console\AppNamespaceDetectorTrait;
-
 trait RepositoryGeneratableTrait
 {
-
-    use AppNamespaceDetectorTrait;
-
     /**
      * Contract/Interface Name.
      *
@@ -72,8 +67,7 @@ trait RepositoryGeneratableTrait
      */
     protected function setContractNamespace($contractNamespace)
     {
-        $this->contractNamespace
-            = $this->getAppNamespace() . $contractNamespace;
+        $this->contractNamespace = $contractNamespace;
 
         return $this;
     }
@@ -87,8 +81,7 @@ trait RepositoryGeneratableTrait
      */
     protected function setRepositoryNamespace($repositoryNamespace)
     {
-        $this->repositoryNamespace
-            = $this->getAppNamespace() . $repositoryNamespace;
+        $this->repositoryNamespace = $repositoryNamespace;
 
         return $this;
     }
@@ -97,16 +90,17 @@ trait RepositoryGeneratableTrait
      * Set the properties for the Repository.
      *
      * @param $model
+     * @param $repoName
      */
-    protected function config($model)
+    protected function config($model, $repoName, $namespace)
     {
-        $this->setContractName("{$model}Repository");
+        $this->setContractName("{$repoName}Repository");
 
-        $this->setRepositoryName("Eloquent{$model}Repository");
+        $this->setRepositoryName("Eloquent{$repoName}Repository");
 
-        $this->setContractNamespace("{$model}\\Contracts");
+        $this->setContractNamespace("{$namespace}{$model}\\Contracts");
 
-        $this->setRepositoryNamespace("{$model}\\Repositories");
+        $this->setRepositoryNamespace("{$namespace}{$model}\\Repositories");
     }
 
     /**
@@ -116,7 +110,7 @@ trait RepositoryGeneratableTrait
      *
      * @return mixed
      */
-    private function makeRepositoryContract($modelPath)
+    protected function makeRepositoryContract($modelPath)
     {
         $path = "{$modelPath}/Contracts/{$this->contractName}.php";
 
@@ -134,7 +128,7 @@ trait RepositoryGeneratableTrait
      *
      * @return mixed
      */
-    private function makeEloquentRepository($modelPath)
+    protected function makeEloquentRepository($modelPath)
     {
         $path = "{$modelPath}/Repositories/{$this->repositoryName}.php";
 

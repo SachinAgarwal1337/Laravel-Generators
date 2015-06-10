@@ -1,0 +1,102 @@
+<?php namespace SKAgarwal\Generators\Commands;
+
+use Illuminate\Console\AppNamespaceDetectorTrait;
+use Illuminate\Console\Command;
+use SKAgarwal\Generators\ListenerGenerator;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
+
+class ListenerGeneratorCommand extends Command
+{
+    use AppNamespaceDetectorTrait;
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $name = 'create:listener';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Create A New Model Specific Event Listener Class';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle(ListenerGenerator $listenerGenerator)
+    {
+        $name = $this->argument('name');
+        $options['model'] = $this->option('model');
+        $options['event'] = $this->option('event');
+        $options['queued'] = $this->option('queued');
+
+        $listenerGenerator->generate($name, $options);
+        $model  = ucfirst($options['model']);
+        $listener = ucfirst($name);
+        $this->info("Created: app\\{$model}\\Listeners\\{$listener}.php");
+
+    }
+
+    /**
+     * Get the console command arguments.
+     *
+     * @return array
+     */
+    protected function getArguments()
+    {
+        return [
+            [
+                'name',
+                InputArgument::REQUIRED,
+                'Name of the event listener class.'
+            ],
+        ];
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            [
+                '--model',
+                '-m',
+                InputOption::VALUE_REQUIRED,
+                'Name of the model under which event will be created.',
+                null
+            ],
+            [
+                '--event',
+                '-e',
+                InputOption::VALUE_REQUIRED,
+                'The event class, the listener is being listened for',
+                null
+            ],
+            [
+                '--queued',
+                null,
+                InputOption::VALUE_NONE,
+                'Indicates event listener should be queued',
+                null
+            ],
+        ];
+    }
+}
