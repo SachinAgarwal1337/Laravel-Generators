@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 class RepositoryGeneratorCommand extends Command
 {
+
     /**
      * The name and signature of the console command.
      *
@@ -19,7 +20,7 @@ class RepositoryGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Generate Repository Contract and its Eloquent Repository Implimentation';
+    protected $description = 'Generate a contract and the eloquent repository implementation.';
 
     /**
      * Create a new command instance.
@@ -34,13 +35,14 @@ class RepositoryGeneratorCommand extends Command
     /**
      * Execute the console command.
      *
+     * @param RepositoryGenerator $repositoryGenerator
      * @return mixed
      */
-    public function handle(RepositoryGenerator $repoGenreator)
+    public function handle(RepositoryGenerator $repositoryGenerator)
     {
         $model = ucfirst($this->argument('model'));
         $repo = $this->option('repository');
-        $repoGenreator->generate($model, $repo);
+        $repositoryGenerator->generate($model, $repo);
 
         $repo = ucfirst($repo ?: $model);
         $this->info("Created: app\\{$model}\\Contracts\\{$repo}Repository");

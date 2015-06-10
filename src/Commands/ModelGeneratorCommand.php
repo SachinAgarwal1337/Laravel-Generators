@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 class ModelGeneratorCommand extends Command
 {
+
     /**
      * The name and signature of the console command.
      *
@@ -19,7 +20,7 @@ class ModelGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Generate Directory structure for a model';
+    protected $description = 'Generate directory structure for a Model.';
 
     /**
      * Create a new command instance.

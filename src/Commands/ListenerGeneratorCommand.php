@@ -8,7 +8,9 @@ use Symfony\Component\Console\Input\InputOption;
 
 class ListenerGeneratorCommand extends Command
 {
+
     use AppNamespaceDetectorTrait;
+
     /**
      * The name and signature of the console command.
      *
@@ -21,7 +23,7 @@ class ListenerGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create A New Model Specific Event Listener Class';
+    protected $description = 'Create a new Model specific Listener class.';
 
     /**
      * Create a new command instance.
@@ -36,6 +38,7 @@ class ListenerGeneratorCommand extends Command
     /**
      * Execute the console command.
      *
+     * @param ListenerGenerator $listenerGenerator
      * @return mixed
      */
     public function handle(ListenerGenerator $listenerGenerator)

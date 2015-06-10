@@ -4,11 +4,15 @@ trait JobGeneratableTrait
 {
 
     /**
+     * Namespace of the Job.
+     *
      * @var
      */
     protected $jobNamespace;
 
     /**
+     * Set the namespace of the Job.
+     *
      * @param mixed $jobNamespace
      *
      * @return $this
@@ -21,7 +25,7 @@ trait JobGeneratableTrait
     }
 
     /**
-     * Set the properties for the Job
+     * Set the properties for the Job.
      *
      * @param $model
      * @param $namespace

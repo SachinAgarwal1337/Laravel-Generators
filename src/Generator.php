@@ -29,13 +29,15 @@ abstract class Generator
     protected $modelPath;
 
     /**
-     * Namepsace of the application.
+     * Namespace of the application.
      *
      * @var
      */
     protected $namespace;
 
     /**
+     * The constructor,
+     *
      * @param Filesystem $file
      */
     public function __construct(Filesystem $file)
@@ -44,16 +46,20 @@ abstract class Generator
     }
 
     /**
-     * @param mixed $namespace
+     * Set the namespace.
+     *
+     * @return $this
      */
     public function setNamespace()
     {
         $this->namespace = $this->getAppNamespace();
+
+        return $this;
     }
 
 
     /**
-     * set the properties
+     * Set the properties
      *
      * @param $model
      */

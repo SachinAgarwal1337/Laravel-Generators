@@ -89,7 +89,6 @@ class ModelGenerator extends Generator
         return $migration ? "--migration" : '';
     }
 
-
     /**
      * Set all the properties of the Class.
      *

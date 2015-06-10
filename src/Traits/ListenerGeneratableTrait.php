@@ -3,12 +3,16 @@
 trait ListenerGeneratableTrait
 {
     /**
+     * Namespace of the listener.
+     *
      * @var string
      */
     protected $listenerNamespace;
 
     /**
-     * @param string $eventNamespace
+     * Set the listener namespace.
+     *
+     * @param string $listenerNamespace
      *
      * @return $this
      */
@@ -20,7 +24,7 @@ trait ListenerGeneratableTrait
     }
 
     /**
-     * Set the properties for the Event Listener
+     * Set the properties for the Event Listener.
      *
      * @param $model
      * @param $namespace

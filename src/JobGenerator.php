@@ -10,7 +10,7 @@ class JobGenerator extends Generator
     }
 
     /**
-     * Generate Job.
+     * Generate a Job.
      *
      * @param $name
      * @param $options
@@ -29,7 +29,7 @@ class JobGenerator extends Generator
     }
 
     /**
-     * Check if job should be queued.
+     * Check if the Job should be queued.
      *
      * @param $queued
      *
