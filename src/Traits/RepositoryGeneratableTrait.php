@@ -140,7 +140,7 @@ trait RepositoryGeneratableTrait
     }
 
     /**
-     * Get the content for Repository Contract/Interface
+     * Get the content for Repository Contract/Interface.
      *
      * @return strung|array
      */
@@ -163,7 +163,8 @@ trait RepositoryGeneratableTrait
     {
         $template = $this->getTemplate('EloquentRepository');
 
-        $contractNamespace = $this->contractNamespace . "\\$this->contractName";
+        $contractNamespace
+            = "{$this->contractNamespace}\\{$this->contractName}";
 
         $find = [
             '{{Namespace}}',

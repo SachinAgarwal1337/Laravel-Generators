@@ -1,11 +1,11 @@
-<?php namespace SKAgarwal\Generators\Commands;
+<?php namespace SKagarwal\Generators\Commands;
 
 use Illuminate\Console\Command;
-use SKAgarwal\Generators\RepositoryGenerator;
+use SKAgarwal\Generators\JobGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class RepositoryGeneratorCommand extends Command
+class JobGeneratorCommand extends Command
 {
 
     /**
@@ -13,14 +13,14 @@ class RepositoryGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $name = 'create:repository';
+    protected $name = 'create:job';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate a contract and the eloquent repository implementation.';
+    protected $description = 'Create a new Model specific Job.';
 
     /**
      * Create a new command instance.
@@ -35,19 +35,21 @@ class RepositoryGeneratorCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param RepositoryGenerator $repositoryGenerator
+     * @param JobGenerator $jobGenerator
      *
      * @return mixed
      */
-    public function handle(RepositoryGenerator $repositoryGenerator)
+    public function handle(JobGenerator $jobGenerator)
     {
-        $model = ucfirst($this->argument('model'));
-        $repo = $this->option('repository');
-        $repositoryGenerator->generate($model, $repo);
+        $name = $this->argument('name');
+        $options['model'] = $this->option('model');
+        $options['queued'] = $this->option('queued');
 
-        $repo = ucfirst($repo ?: $model);
-        $this->info("Created: app\\{$model}\\Contracts\\{$repo}Repository");
-        $this->info("Created: app\\{$model}\\Repositories\\Eloquent{$repo}Repository");
+        $jobGenerator->generate($name, $options);
+
+        $name = ucfirst($name);
+        $model = ucfirst($options['model']);
+        $this->info("Created: app\\{$model}\\Jobs\\{$name}");
     }
 
     /**
@@ -59,9 +61,9 @@ class RepositoryGeneratorCommand extends Command
     {
         return [
             [
-                'model',
+                'name',
                 InputArgument::REQUIRED,
-                'Name of the model to be created.'
+                'Name of the event listener class.'
             ],
         ];
     }
@@ -75,10 +77,17 @@ class RepositoryGeneratorCommand extends Command
     {
         return [
             [
-                '--repository',
-                '-r',
+                '--model',
+                '-m',
                 InputOption::VALUE_REQUIRED,
-                'Name of the repository to be created.',
+                'Name of the model under which job will be created.',
+                null
+            ],
+            [
+                '--queued',
+                null,
+                InputOption::VALUE_NONE,
+                'Indicated that Job should be queued.',
                 null
             ],
         ];

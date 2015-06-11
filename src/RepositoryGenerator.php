@@ -9,14 +9,14 @@ class RepositoryGenerator extends Generator
     }
 
     /**
-     * repository name
+     * Repository name.
      *
      * @var string
      */
     private $repo;
 
     /**
-     * Generate the Repository Contract and Implimentation
+     * Generate the Repository Contract and Implementation.
      *
      * @param $model
      * @param $repo
@@ -43,11 +43,11 @@ class RepositoryGenerator extends Generator
         parent::config($model);
 
         $repo = $this->getRepositoryName();
-        $this->repoConfig($this->model, $repo,  $this->namespace);
+        $this->repoConfig($this->model, $repo, $this->namespace);
     }
 
     /**
-     * get the repository name
+     * Get the repository name
      *
      * @return string
      */

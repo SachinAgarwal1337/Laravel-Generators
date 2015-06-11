@@ -1,6 +1,5 @@
 <?php namespace Tests\Generators;
 
-use Illuminate\Filesystem\Filesystem;
 use SKAgarwal\Generators\EventGenerator;
 use SKAgarwal\Reflection\ReflectableTrait;
 use Tests\TestCase;
@@ -18,9 +17,10 @@ class EventGeneratorTest extends TestCase
     {
         $eventGenerator = $this->mock(
             EventGenerator::class,
-            [new Filesystem()],
+            [],
             ['getAppNamespace'],
-            ['App\\']
+            ['App\\'],
+            false
         );
 
         $this->reflect($eventGenerator);
@@ -32,9 +32,8 @@ class EventGeneratorTest extends TestCase
      */
     public function it_will_configure_event_generator()
     {
-        $this->setName = 'FooEvent';
         $this->callConfig('foo');
         $this->assertEquals('Foo', $this->getModel);
-        $this->assertEquals('App\\Foo\\Events\\FooEvent', $this->getEvent);
+        $this->assertEquals('App\\Foo\\Events', $this->getEventNamespace);
     }
 }

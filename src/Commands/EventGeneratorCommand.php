@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 class EventGeneratorCommand extends Command
 {
+
     /**
      * The name and signature of the console command.
      *
@@ -19,7 +20,7 @@ class EventGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create A New Model Specific Event Class';
+    protected $description = 'Create a new Model specific Event class.';
 
     /**
      * Create a new command instance.
@@ -34,6 +35,8 @@ class EventGeneratorCommand extends Command
     /**
      * Execute the console command.
      *
+     * @param EventGenerator $eventGen
+     *
      * @return mixed
      */
     public function handle(EventGenerator $eventGen)
@@ -46,8 +49,7 @@ class EventGeneratorCommand extends Command
         if ($model) {
             $model = ucfirst($model);
             $this->info("Created: app\\$model\\Events\\$name.php");
-        }
-        else {
+        } else {
             $this->info("Created: app\\Events\\$name.php");
         }
     }

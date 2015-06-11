@@ -1,43 +1,33 @@
 <?php namespace SKAgarwal\Generators;
 
 use Illuminate\Support\Facades\Artisan;
+use SKAgarwal\Generators\Traits\EventGeneratableTrait;
 
 class EventGenerator extends Generator
 {
-    /**
-     * @var string
-     */
-    protected $event;
+    use EventGeneratableTrait {
+        config as eventConfig;
+    }
 
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * Generate Event
+     * Generate Event.
      *
      * @param $name
      * @param $model
      */
     public function generate($name, $model)
     {
-        $this->name - ucfirst($name);
+        $name - ucfirst($name);
         $this->config($model);
 
-        Artisan::call('make:event', ['name' => $this->event]);
+        Artisan::call('make:event', [
+            'name' => "{$this->eventNamespace}\\{$name}"
+        ]);
     }
 
-    /**
-     * @param string $event
-     */
-    public function setEvent($event)
-    {
-        $this->event = $event;
-    }
 
     /**
-     * Configure Event Generator
+     * Configure Event Generator.
      *
      * @param $model
      */
@@ -45,6 +35,6 @@ class EventGenerator extends Generator
     {
         parent::config($model);
 
-        $this->setEvent("{$this->namespace}{$this->model}\\Events\\{$this->name}");
+        $this->eventConfig($this->model, $this->namespace);
     }
 }

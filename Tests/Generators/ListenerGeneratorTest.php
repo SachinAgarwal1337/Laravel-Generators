@@ -1,6 +1,5 @@
 <?php namespace Tests\Generators;
 
-use Illuminate\Filesystem\Filesystem;
 use SKAgarwal\Generators\ListenerGenerator;
 use SKAgarwal\Reflection\ReflectableTrait;
 use Tests\TestCase;
@@ -14,9 +13,10 @@ class ListenerGeneratorTest extends TestCase
     {
         $listenerGenerator = $this->mock(
             ListenerGenerator::class,
-            [new Filesystem()],
+            [],
             ['getAppNamespace'],
-            ['App\\']
+            ['App\\'],
+            false
         );
 
         $this->reflect($listenerGenerator);

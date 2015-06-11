@@ -1,22 +1,26 @@
 <?php namespace SKAgarwal\Generators;
 
 use Illuminate\Support\Facades\Artisan;
+use SKAgarwal\Generators\Traits\EventGeneratableTrait;
 use SKAgarwal\Generators\Traits\ListenerGeneratableTrait;
 
 class ListenerGenerator extends Generator
 {
-    use ListenerGeneratableTrait {
-        config as listenerConfig;
+    use ListenerGeneratableTrait, EventGeneratableTrait {
+        ListenerGeneratableTrait::config as listenerConfig;
+        EventGeneratableTrait::config as eventConfig;
     }
 
     /**
-     * Name of the Listener
+     * Name of the Listener.
      *
      * @var String
      */
     protected $name;
 
     /**
+     * List of arguments.
+     *
      * @var array
      */
     protected $arguments = [];
@@ -24,8 +28,8 @@ class ListenerGenerator extends Generator
     /**
      * Generate the listener.
      *
-     * @param       $name
-     * @param array $options
+     * @param string $name
+     * @param array  $options
      */
     public function generate($name, $options = [])
     {
@@ -35,7 +39,6 @@ class ListenerGenerator extends Generator
         $this->setArguments($options);
         Artisan::call('make:listener', $this->arguments);
     }
-
 
     /**
      * Check if listener should be queued.
@@ -50,14 +53,16 @@ class ListenerGenerator extends Generator
     }
 
     /**
-     * @param array $arguments
+     * Set the arguments.
+     *
+     * @param $options
      */
     public function setArguments($options)
     {
         $queued = $this->isQueued($options['queued']);
 
         $this->arguments = [
-            'name'     => "$this->listenerNamespace\\{$this->name}",
+            'name'     => "{$this->listenerNamespace}\\{$this->name}",
             '--queued' => $queued,
         ];
 
@@ -78,13 +83,15 @@ class ListenerGenerator extends Generator
     }
 
     /**
-     * Configure Listerer Generator
+     * Configure the Listener Generator.
      *
      * @param $model
      */
     protected function config($model)
     {
         parent::config($model);
+
         $this->listenerConfig($this->model, $this->namespace);
+        $this->eventConfig($this->model, $this->namespace);
     }
 }

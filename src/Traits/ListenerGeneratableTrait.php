@@ -3,27 +3,18 @@
 trait ListenerGeneratableTrait
 {
     /**
-     * @var string
-     */
-    protected $eventNamespace;
-
-    /**
+     * Namespace of the listener.
+     *
      * @var string
      */
     protected $listenerNamespace;
 
     /**
-     * @param string $eventNamespace
-     */
-    public function setEventNamespace($eventNamespace)
-    {
-        $this->eventNamespace = $eventNamespace;
-
-        return $this;
-    }
-
-    /**
-     * @param string $eventNamespace
+     * Set the listener namespace.
+     *
+     * @param string $listenerNamespace
+     *
+     * @return $this
      */
     protected function setListenerNamespace($listenerNamespace)
     {
@@ -33,7 +24,7 @@ trait ListenerGeneratableTrait
     }
 
     /**
-     * Set the properties for the Event Listener
+     * Set the properties for the Event Listener.
      *
      * @param $model
      * @param $namespace
@@ -41,7 +32,5 @@ trait ListenerGeneratableTrait
     protected function config($model, $namespace)
     {
         $this->setListenerNamespace("{$namespace}{$model}\\Listeners");
-
-        $this->setEventNamespace("{$namespace}{$model}\\Events");
     }
 }
