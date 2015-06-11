@@ -9,8 +9,8 @@
          stopOnFailure="false"
          syntaxCheck="false">
     <testsuites>
-        <testsuite name="Application Test Suite">
-            <directory>./Tests/</directory>
+        <testsuite name="Generators Tests">
+            <directory>./tests/</directory>
         </testsuite>
     </testsuites>
 

@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 class JobGeneratorCommand extends Command
 {
+
     /**
      * The name and signature of the console command.
      *
@@ -19,7 +20,7 @@ class JobGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description.';
+    protected $description = 'Create a new Model specific Job.';
 
     /**
      * Create a new command instance.
@@ -34,6 +35,7 @@ class JobGeneratorCommand extends Command
     /**
      * Execute the console command.
      *
+     * @param JobGenerator $jobGenerator
      * @return mixed
      */
     public function handle(JobGenerator $jobGenerator)

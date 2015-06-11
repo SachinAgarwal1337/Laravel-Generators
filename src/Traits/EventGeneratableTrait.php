@@ -4,11 +4,15 @@ trait EventGeneratableTrait
 {
 
     /**
+     * Namespace of the event.
+     *
      * @var string
      */
     protected $eventNamespace;
 
     /**
+     * Set the namespace of the event.
+     *
      * @param string $eventNamespace
      *
      * @return $this
@@ -21,7 +25,7 @@ trait EventGeneratableTrait
     }
 
     /**
-     * Set properties of Event Generator
+     * Set properties of Event Generator.
      *
      * @param $model
      * @param $namespace

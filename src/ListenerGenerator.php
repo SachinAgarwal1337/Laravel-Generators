@@ -12,13 +12,15 @@ class ListenerGenerator extends Generator
     }
 
     /**
-     * Name of the Listener
+     * Name of the Listener.
      *
      * @var String
      */
     protected $name;
 
     /**
+     * List of arguments.
+     *
      * @var array
      */
     protected $arguments = [];
@@ -38,7 +40,6 @@ class ListenerGenerator extends Generator
         Artisan::call('make:listener', $this->arguments);
     }
 
-
     /**
      * Check if listener should be queued.
      *
@@ -52,7 +53,9 @@ class ListenerGenerator extends Generator
     }
 
     /**
-     * @param array $arguments
+     * Set the arguments.
+     *
+     * @param $options
      */
     public function setArguments($options)
     {
@@ -80,13 +83,14 @@ class ListenerGenerator extends Generator
     }
 
     /**
-     * Configure Listerer Generator
+     * Configure the Listener Generator.
      *
      * @param $model
      */
     protected function config($model)
     {
         parent::config($model);
+
         $this->listenerConfig($this->model, $this->namespace);
         $this->eventConfig($this->model, $this->namespace);
     }

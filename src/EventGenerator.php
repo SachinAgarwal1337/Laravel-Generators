@@ -10,7 +10,7 @@ class EventGenerator extends Generator
     }
 
     /**
-     * Generate Event
+     * Generate Event.
      *
      * @param $name
      * @param $model
@@ -27,7 +27,7 @@ class EventGenerator extends Generator
 
 
     /**
-     * Configure Event Generator
+     * Configure Event Generator.
      *
      * @param $model
      */
