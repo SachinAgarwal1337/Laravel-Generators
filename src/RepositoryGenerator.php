@@ -43,7 +43,7 @@ class RepositoryGenerator extends Generator
         parent::config($model);
 
         $repo = $this->getRepositoryName();
-        $this->repoConfig($this->model, $repo,  $this->namespace);
+        $this->repoConfig($this->model, $repo, $this->namespace);
     }
 
     /**

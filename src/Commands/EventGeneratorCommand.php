@@ -36,6 +36,7 @@ class EventGeneratorCommand extends Command
      * Execute the console command.
      *
      * @param EventGenerator $eventGen
+     *
      * @return mixed
      */
     public function handle(EventGenerator $eventGen)
@@ -48,8 +49,7 @@ class EventGeneratorCommand extends Command
         if ($model) {
             $model = ucfirst($model);
             $this->info("Created: app\\$model\\Events\\$name.php");
-        }
-        else {
+        } else {
             $this->info("Created: app\\Events\\$name.php");
         }
     }

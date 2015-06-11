@@ -36,6 +36,7 @@ class JobGeneratorCommand extends Command
      * Execute the console command.
      *
      * @param JobGenerator $jobGenerator
+     *
      * @return mixed
      */
     public function handle(JobGenerator $jobGenerator)
@@ -84,7 +85,7 @@ class JobGeneratorCommand extends Command
             ],
             [
                 '--queued',
-                '-e',
+                null,
                 InputOption::VALUE_NONE,
                 'Indicated that Job should be queued.',
                 null

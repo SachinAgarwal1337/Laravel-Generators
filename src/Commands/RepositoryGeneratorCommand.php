@@ -36,6 +36,7 @@ class RepositoryGeneratorCommand extends Command
      * Execute the console command.
      *
      * @param RepositoryGenerator $repositoryGenerator
+     *
      * @return mixed
      */
     public function handle(RepositoryGenerator $repositoryGenerator)

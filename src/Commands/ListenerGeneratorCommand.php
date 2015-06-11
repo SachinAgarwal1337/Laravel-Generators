@@ -39,6 +39,7 @@ class ListenerGeneratorCommand extends Command
      * Execute the console command.
      *
      * @param ListenerGenerator $listenerGenerator
+     *
      * @return mixed
      */
     public function handle(ListenerGenerator $listenerGenerator)
@@ -49,7 +50,7 @@ class ListenerGeneratorCommand extends Command
         $options['queued'] = $this->option('queued');
 
         $listenerGenerator->generate($name, $options);
-        $model  = ucfirst($options['model']);
+        $model = ucfirst($options['model']);
         $listener = ucfirst($name);
         $this->info("Created: app\\{$model}\\Listeners\\{$listener}.php");
 

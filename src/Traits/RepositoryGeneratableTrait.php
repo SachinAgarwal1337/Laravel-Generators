@@ -163,7 +163,8 @@ trait RepositoryGeneratableTrait
     {
         $template = $this->getTemplate('EloquentRepository');
 
-        $contractNamespace = "{$this->contractNamespace}\\{$this->contractName}";
+        $contractNamespace
+            = "{$this->contractNamespace}\\{$this->contractName}";
 
         $find = [
             '{{Namespace}}',
