@@ -2,7 +2,11 @@
     "name": "skagarwal/generators",
     "description": "Directory Structure Laravel 5.1 Generator.",
     "type": "library",
-    "keywords": ["Laravel", "generators"],
+    "keywords": [
+        "Laravel",
+        "generators",
+        "Laravel 5.1"
+    ],
     "time": "2015-05-28",
     "license": "MIT",
     "authors": [
@@ -33,7 +37,5 @@
         "psr-4": {
             "Tests\\": "Tests/"
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
