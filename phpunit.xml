@@ -10,7 +10,7 @@
          syntaxCheck="false">
     <testsuites>
         <testsuite name="Generators Tests">
-            <directory>./tests/</directory>
+            <directory>./Tests/</directory>
         </testsuite>
     </testsuites>
 
