@@ -50,9 +50,13 @@ class ListenerGeneratorCommand extends Command
         $options['queued'] = $this->option('queued');
 
         $listenerGenerator->generate($name, $options);
-        $model = ucfirst($options['model']);
         $listener = ucfirst($name);
-        $this->info("Created: app\\{$model}\\Listeners\\{$listener}.php");
+        if ($options['model']) {
+            $model = ucfirst($options['model']);
+            $this->info("Created: app\\{$model}\\Listeners\\{$listener}.php");
+        } else {
+            $this->info("Created: app\\Listeners\\{$listener}.php");
+        }
 
     }
 
