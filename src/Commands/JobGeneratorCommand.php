@@ -63,7 +63,7 @@ class JobGeneratorCommand extends Command
             [
                 'name',
                 InputArgument::REQUIRED,
-                'Name of the event listener class.'
+                'Name of the Job.'
             ],
         ];
     }
