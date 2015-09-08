@@ -26,6 +26,7 @@ class GeneratorsServiceProvider extends ServiceProvider
         $this->registerEventGenerator();
         $this->registerListenerGenerator();
         $this->registerJobGenerator();
+        $this->registerPolicyGenerator();
     }
 
     /**
@@ -86,5 +87,17 @@ class GeneratorsServiceProvider extends ServiceProvider
         });
 
         $this->commands('command.skagarwal.job');
+    }
+
+    /**
+     * Register the create:job command.
+     */
+    private function registerPolicyGenerator()
+    {
+        $this->app->singleton('command.skagarwal.policy', function ($app) {
+            return $app['SKAgarwal\Generators\Commands\PolicyGeneratorCommand'];
+        });
+
+        $this->commands('command.skagarwal.policy');
     }
 }

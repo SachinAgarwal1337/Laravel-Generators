@@ -48,6 +48,8 @@ class ModelGenerator extends Generator
 
         $this->makeSubDirectory("Events");
 
+        $this->makeSubDirectory("Policies");
+
         $this->makeSubDirectory("Listeners");
 
         $this->makeSubDirectory("Jobs");

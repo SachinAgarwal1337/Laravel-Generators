@@ -90,6 +90,8 @@ app/
     |
     |_Events/
     |
+    |_Policies/
+    |
     |_Jobs/
     |
     |_Listeners/
@@ -195,6 +197,28 @@ php artisan create:job RegisterUser --model=User --queued
 This will produce:
 ```php
 User\Jobs\RegisterUser.php
+```
+
+-
+
+#### `create:policy`
+**Description:**
+- Creates a policy in `{model}\Policies\` directory.
+
+**Arguments:**
+- `name` - _Required._ Name of the policy.
+
+**Options:**
+- `model` - _Required._ Name of the model policy belongs to.
+
+**Usage:**
+```php
+php artisan create:policy PostPolicy --model=Post
+```
+
+This will produce:
+```php
+Post\Policies\PostPolicy.php
 ```
 
 -
