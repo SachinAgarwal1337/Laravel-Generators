@@ -1,11 +1,11 @@
 <?php namespace SKAgarwal\Generators\Commands;
 
 use Illuminate\Console\Command;
-use SKAgarwal\Generators\EventGenerator;
+use SKAgarwal\Generators\PolicyGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class EventGeneratorCommand extends Command
+class PolicyGeneratorCommand extends Command
 {
 
     /**
@@ -13,14 +13,14 @@ class EventGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $name = 'create:event';
+    protected $name = 'create:policy';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new Model specific Event class.';
+    protected $description = 'Create a new Model specific Policy class.';
 
     /**
      * Create a new command instance.
@@ -39,18 +39,18 @@ class EventGeneratorCommand extends Command
      *
      * @return mixed
      */
-    public function handle(EventGenerator $eventGen)
+    public function handle(PolicyGenerator $policyGen)
     {
         $name = $this->argument('name');
         $model = $this->option('model');
-        $eventGen->generate($name, $model);
+        $policyGen->generate($name, $model);
 
         $name = ucfirst($name);
         if ($model) {
             $model = ucfirst($model);
-            $this->info("Created: app\\$model\\Events\\$name.php");
+            $this->info("Created: app\\$model\\Policies\\$name.php");
         } else {
-            $this->info("Created: app\\Events\\$name.php");
+            $this->info("Created: app\\Policies\\$name.php");
         }
     }
 
@@ -65,7 +65,7 @@ class EventGeneratorCommand extends Command
             [
                 'name',
                 InputArgument::REQUIRED,
-                'Name of the event class to be created.'
+                'Name of the policy class to be created.',
             ],
         ];
     }
@@ -82,8 +82,8 @@ class EventGeneratorCommand extends Command
                 '--model',
                 '-m',
                 InputOption::VALUE_REQUIRED,
-                'Name of the model under which event will be created.',
-                null
+                'Name of the model under which policy will be created.',
+                null,
             ],
         ];
     }
