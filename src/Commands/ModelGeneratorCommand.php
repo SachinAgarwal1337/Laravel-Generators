@@ -56,6 +56,8 @@ class ModelGeneratorCommand extends Command
         $this->info("  |");
         $this->info("  |_Events/");
         $this->info("  |");
+        $this->info("  |_Policies/");
+        $this->info("  |");
         $this->info("  |_Jobs/");
         $this->info("  |");
         $this->info("  |_Listeners/");

@@ -1,16 +1,16 @@
 <?php namespace SKAgarwal\Generators;
 
 use Illuminate\Support\Facades\Artisan;
-use SKAgarwal\Generators\Traits\EventGeneratableTrait;
+use SKAgarwal\Generators\Traits\PolicyGeneratableTrait;
 
-class EventGenerator extends Generator
+class PolicyGenerator extends Generator
 {
-    use EventGeneratableTrait {
-        config as eventConfig;
+    use PolicyGeneratableTrait {
+        config as policyConfig;
     }
 
     /**
-     * Generate Event.
+     * Generate Policy.
      *
      * @param $name
      * @param $model
@@ -20,14 +20,13 @@ class EventGenerator extends Generator
         $name = ucfirst($name);
         $this->config($model);
 
-        Artisan::call('make:event', [
-            'name' => "{$this->eventNamespace}\\{$name}",
+        Artisan::call('make:policy', [
+            'name' => "{$this->policyNamespace}\\{$name}",
         ]);
     }
 
-
     /**
-     * Configure Event Generator.
+     * Configure Policy Generator.
      *
      * @param $model
      */
@@ -35,6 +34,7 @@ class EventGenerator extends Generator
     {
         parent::config($model);
 
-        $this->eventConfig($this->model, $this->namespace);
+        $this->policyConfig($this->model, $this->namespace);
     }
+    
 }

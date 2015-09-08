@@ -1,4 +1,4 @@
-<?php namespace SKagarwal\Generators\Commands;
+<?php namespace SKAgarwal\Generators\Commands;
 
 use Illuminate\Console\Command;
 use SKAgarwal\Generators\JobGenerator;
