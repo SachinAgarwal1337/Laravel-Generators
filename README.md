@@ -1,7 +1,10 @@
+# This project is not maintained anymore.
+
 # Laravel-5.1-Generators
 [![Build Status](https://travis-ci.org/SachinAgarwal1337/Laravel-5.1-Generators.svg?branch=master)](https://travis-ci.org/SachinAgarwal1337/Laravel-5.1-Generators) [![Latest Stable Version](https://poser.pugx.org/skagarwal/generators/v/stable)](https://packagist.org/packages/skagarwal/generators) [![Latest Unstable Version](https://poser.pugx.org/skagarwal/generators/v/unstable)](https://packagist.org/packages/skagarwal/generators) [![License](https://poser.pugx.org/skagarwal/generators/license)](https://packagist.org/packages/skagarwal/generators)
 <br><br>If you like to keep your laravel appliaction in well formed structure and tired of making all the directories and subdirectories manually for every model, Then this package will help you automate this process.
 <br><br>
+
 **This Package Strictly Follows The Directory Structure:** 
 ```php
 app/
